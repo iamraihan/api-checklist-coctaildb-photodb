@@ -53,8 +53,8 @@ const multiLIne = (num1, num2) => {
     let total = sum1 + sum2
     return total
 }
-const output = multiLIne(10, 10)
-console.log(output);
+// const output = multiLIne(10, 10)
+// console.log(output);
 
 
 
@@ -63,8 +63,10 @@ console.log(output);
 
 
 // ৪. অনেকগুলা সংখ্যার একটা array হবে। তারপর তোমার কাজ হবে array এর উপরে map ইউজ করে। প্রত্যেকটা উপাদানকে ৭ দিয়ে ভাগ করে ভাগফল আরেকটা array হিসেবে রাখবে। পুরা কাজটা এক লাইনে হবে।
+const arr = [10, 49, 55, 66, 74, 15, 7, 36, 99, 52]
+const arrResult = arr.map(result => result / 7)
 
-
+console.log(arrResult);
 
 // ৫. জাভাস্ক্রিপ্ট এ array এর map, forEach, filter, find কোনটা দিয়ে কি হয়। সেটার একটা সামারি লিখে ফেলো।
 
