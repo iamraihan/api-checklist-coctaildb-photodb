@@ -34,7 +34,7 @@ const displayCoctail = (drinks) => {
     // const drinksContainer = document.getElementById('drinks-container')
     drinksContainer.innerText = ''
     drinks.forEach(drink => {
-        console.log(drink);
+        // console.log(drink);
         if (drink.length == -1) {
             alert('type string')
         }
@@ -44,7 +44,7 @@ const displayCoctail = (drinks) => {
             const div = document.createElement('div')
             div.classList.add('card')
             div.innerHTML = `
-            <img src="${drink.strDrinkThumb}" class="card-img-top" alt="...">
+            <img onclick="getDetails(${drink.idDrink})" src="${drink.strDrinkThumb}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">${drink.strDrink}</h5>
               <p class="card-text">${drink.strInstructions.slice(0, 100)}</p>
@@ -53,4 +53,14 @@ const displayCoctail = (drinks) => {
             drinksContainer.appendChild(div)
         }
     })
+}
+
+const getDetails = (id) => {
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayDetails(data.drinks[0]))
+}
+const displayDetails = (detail) => {
+    console.log(detail)
 }
