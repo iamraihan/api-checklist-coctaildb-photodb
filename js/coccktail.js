@@ -2,7 +2,10 @@
 let error = document.getElementById('error')
 const drinksContainer = document.getElementById('drinks-container')
 const detailsContainer = document.getElementById('details-conntainer')
-
+// spinner 
+const toggleSpinner = (toggle) => {
+    document.getElementById('toggle').style.display = toggle
+}
 // error handle function 
 const errorHandle = (err) => {
     error.style.display = 'block'
@@ -14,7 +17,9 @@ const errorHandle = (err) => {
 const getCoctail = () => {
     const searchInput = document.getElementById('search-input')
     let input = searchInput.value
+    toggleSpinner('block')
     if (input === '') {
+        toggleSpinner('none')
         errorHandle('Must Input a valid name!!')
         return
     }
@@ -28,6 +33,7 @@ const getCoctail = () => {
             } else {
                 displayCoctail(data.drinks)
             }
+            toggleSpinner('none')
         })
     searchInput.value = ''
 }
@@ -46,6 +52,7 @@ const displayCoctail = (drinks) => {
         </div>
         `
         drinksContainer.appendChild(div)
+        toggleSpinner('none')
     })
 }
 // fetch api for details view 
@@ -54,9 +61,15 @@ const getDetails = (id) => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayDetails(data.drinks[0]))
+    toggleSpinner('block')
 }
 // display details view 
 const displayDetails = (detail) => {
+    // if (detail === !-1) { // this code is not working 
+    //     toggleSpinner('block') 
+    // } else {
+    //     toggleSpinner('none')
+    // }
     drinksContainer.innerHTML = ''
     detailsContainer.innerHTML = `
     <img src="${detail.strDrinkThumb}" class="card-img-top w-50 " alt="...">
@@ -65,4 +78,5 @@ const displayDetails = (detail) => {
               <p class="card-text">${detail.strInstructions.slice(0, 100)}</p>
             </div>
     `
+    toggleSpinner('none')
 }
