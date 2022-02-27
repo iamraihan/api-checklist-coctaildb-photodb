@@ -63,4 +63,14 @@ const getDetails = (id) => {
 }
 const displayDetails = (detail) => {
     console.log(detail)
+    drinksContainer.innerHTML = ''
+    const detailsContainer = document.getElementById('details-conntainer')
+    detailsContainer.innerHTML = `
+    <img src="${detail.strDrinkThumb}" class="card-img-top w-50 " alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${detail.strDrink}</h5>
+              <p class="card-text">${detail.strInstructions.slice(0, 100)}</p>
+            </div>
+    `
+
 }
