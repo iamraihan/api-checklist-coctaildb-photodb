@@ -1,5 +1,13 @@
 let error = document.getElementById('error')
 const drinksContainer = document.getElementById('drinks-container')
+const detailsContainer = document.getElementById('details-conntainer')
+
+const errorHandle = (err) => {
+    error.style.display = 'block'
+    error.innerText = err
+    drinksContainer.innerHTML = ''
+    detailsContainer.innerHTML = ''
+}
 // event listener function 
 const getCoctail = () => {
     // let error = document.getElementById('error')
@@ -7,9 +15,11 @@ const getCoctail = () => {
     let input = searchInput.value
     // console.log(input);
     if (input === '') {
-        error.style.display = 'block'
-        error.innerText = 'Must Input a valid name!!'
-        drinksContainer.innerText = ''
+        // error.style.display = 'block'
+        // error.innerText = 'Must Input a valid name!!'
+        // drinksContainer.innerHTML = ''
+        // detailsContainer.innerHTML = ''
+        errorHandle('Must Input a valid name!!')
         return
     }
 
@@ -19,9 +29,12 @@ const getCoctail = () => {
         .then(res => res.json())
         .then(data => {
             if (data.drinks === null) {
-                error.style.display = 'block'
-                error.innerText = 'Please input a valid name!!'
-                drinksContainer.innerHTML = ''
+                // error.style.display = 'block'
+                // error.innerText = 'Please input a valid name!!'
+                // drinksContainer.innerHTML = ''
+                // detailsContainer.innerHTML = ''
+                errorHandle('Please input a valid name!!')
+
             } else {
                 displayCoctail(data.drinks)
             }
@@ -32,7 +45,7 @@ const getCoctail = () => {
 
 const displayCoctail = (drinks) => {
     // const drinksContainer = document.getElementById('drinks-container')
-    drinksContainer.innerText = ''
+    drinksContainer.innerHTML = ''
     drinks.forEach(drink => {
         // console.log(drink);
         if (drink.length == -1) {
@@ -62,9 +75,8 @@ const getDetails = (id) => {
         .then(data => displayDetails(data.drinks[0]))
 }
 const displayDetails = (detail) => {
-    console.log(detail)
     drinksContainer.innerHTML = ''
-    const detailsContainer = document.getElementById('details-conntainer')
+    console.log(detail)
     detailsContainer.innerHTML = `
     <img src="${detail.strDrinkThumb}" class="card-img-top w-50 " alt="...">
             <div class="card-body">
