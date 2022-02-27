@@ -43,10 +43,18 @@ const devider = devide => devide / 7
 // ৩.৩ দুই, প্যারামিটার ওয়ালা একটা অ্যারো ফাংশন লিখবে। এই ফাংশনের কাজ হবে যে দুইটা প্যারামিটার ইনপুট নিবে। সেই দুইটা প্যারামিটারকে যোগ করে যোগফলকে দুই দিয়ে ভাগ করে ভাগফল রিটার্ণ করে দাও।
 
 const twoPara = (num1, num2) => (num1 + num2) / 2
-const output = twoPara(10, 20)
-console.log(output);
+// const output = twoPara(10, 20)
+// console.log(output);
 
 // ৩.৪ একাধিক লাইন ওয়ালা অ্যারো ফাংশন লিখো। সেটাতে দুইটা প্যারামিটার নিবে। ওই arrow ফাংশনটা হবে অনেকগুলা লাইনের। সেখানে প্রত্যেকটা ইনপুট প্যারামিটার এর সাথে ৭ যোগ করবে তারপর যোগফল দুইটাকে আবার যোগ করবে। ক্যামনে করবে সেটা চিন্তা করে বের করার চেষ্টা করো।
+const multiLIne = (num1, num2) => {
+    let sum1 = num1 + 7
+    let sum2 = num2 + 7
+    let total = sum1 + sum2
+    return total
+}
+const output = multiLIne(10, 10)
+console.log(output);
 
 
 
